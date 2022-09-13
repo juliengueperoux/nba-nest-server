@@ -1,0 +1,211 @@
+[{
+    "city": "Atlanta",
+    "fullName": "Atlanta Hawks",
+    "confName": "East",
+    "nickname": "Hawks",
+    "teamId": "1610612737"
+  },
+  {
+    "nickname": "Celtics",
+    "teamId": "1610612738",
+    "confName": "East",
+    "fullName": "Boston Celtics",
+    "city": "Boston"
+  },
+  {
+    "teamId": "1610612751",
+    "nickname": "Nets",
+    "confName": "East",
+    "fullName": "Brooklyn Nets",
+    "city": "Brooklyn"
+  },
+  {
+    "nickname": "Hornets",
+    "teamId": "1610612766",
+    "confName": "East",
+    "fullName": "Charlotte Hornets",
+    "city": "Charlotte"
+  },
+  {
+    "teamId": "1610612741",
+    "nickname": "Bulls",
+    "confName": "East",
+    "fullName": "Chicago Bulls",
+    "city": "Chicago"
+  },
+  {
+    "nickname": "Cavaliers",
+    "teamId": "1610612739",
+    "confName": "East",
+    "fullName": "Cleveland Cavaliers",
+    "city": "Cleveland"
+  },
+  {
+    "confName": "West",
+    "city": "Dallas",
+    "fullName": "Dallas Mavericks",
+    "nickname": "Mavericks",
+    "teamId": "1610612742"
+  },
+  {
+    "teamId": "1610612743",
+    "nickname": "Nuggets",
+    "city": "Denver",
+    "fullName": "Denver Nuggets",
+    "confName": "West"
+  },
+  {
+    "teamId": "1610612765",
+    "nickname": "Pistons",
+    "fullName": "Detroit Pistons",
+    "city": "Detroit",
+    "confName": "East"
+  },
+  {
+    "nickname": "Warriors",
+    "teamId": "1610612744",
+    "fullName": "Golden State Warriors",
+    "city": "Golden State",
+    "confName": "West"
+  },
+  {
+    "nickname": "Rockets",
+    "teamId": "1610612745",
+    "confName": "West",
+    "fullName": "Houston Rockets",
+    "city": "Houston"
+  },
+  {
+    "fullName": "Indiana Pacers",
+    "city": "Indiana",
+    "confName": "East",
+    "nickname": "Pacers",
+    "teamId": "1610612754"
+  },
+  {
+    "nickname": "Clippers",
+    "teamId": "1610612746",
+    "confName": "West",
+    "fullName": "LA Clippers",
+    "city": "LA"
+  },
+  {
+    "teamId": "1610612747",
+    "nickname": "Lakers",
+    "city": "Los Angeles",
+    "fullName": "Los Angeles Lakers",
+    "confName": "West"
+  },
+  {
+    "nickname": "Grizzlies",
+    "teamId": "1610612763",
+    "confName": "West",
+    "city": "Memphis",
+    "fullName": "Memphis Grizzlies"
+  },
+  {
+    "nickname": "Heat",
+    "teamId": "1610612748",
+    "confName": "East",
+    "city": "Miami",
+    "fullName": "Miami Heat"
+  },
+  {
+    "nickname": "Bucks",
+    "teamId": "1610612749",
+    "fullName": "Milwaukee Bucks",
+    "city": "Milwaukee",
+    "confName": "East"
+  },
+  {
+    "nickname": "Timberwolves",
+    "teamId": "1610612750",
+    "fullName": "Minnesota Timberwolves",
+    "city": "Minnesota",
+    "confName": "West"
+  },
+  {
+    "fullName": "New Orleans Pelicans",
+    "city": "New Orleans",
+    "confName": "West",
+    "teamId": "1610612740",
+    "nickname": "Pelicans"
+  },
+  {
+    "fullName": "New York Knicks",
+    "city": "New York",
+    "confName": "East",
+    "nickname": "Knicks",
+    "teamId": "1610612752"
+  },
+  {
+    "fullName": "Oklahoma City Thunder",
+    "city": "Oklahoma City",
+    "confName": "West",
+    "teamId": "1610612760",
+    "nickname": "Thunder"
+  },
+  {
+    "confName": "East",
+    "fullName": "Orlando Magic",
+    "city": "Orlando",
+    "nickname": "Magic",
+    "teamId": "1610612753"
+  },
+  {
+    "nickname": "76ers",
+    "teamId": "1610612755",
+    "confName": "East",
+    "fullName": "Philadelphia 76ers",
+    "city": "Philadelphia"
+  },
+  {
+    "city": "Phoenix",
+    "fullName": "Phoenix Suns",
+    "confName": "West",
+    "teamId": "1610612756",
+    "nickname": "Suns"
+  },
+  {
+    "fullName": "Portland Trail Blazers",
+    "city": "Portland",
+    "confName": "West",
+    "teamId": "1610612757",
+    "nickname": "Trail Blazers"
+  },
+  {
+    "teamId": "1610612758",
+    "nickname": "Kings",
+    "confName": "West",
+    "city": "Sacramento",
+    "fullName": "Sacramento Kings"
+  },
+  {
+    "fullName": "San Antonio Spurs",
+    "city": "San Antonio",
+    "confName": "West",
+    "teamId": "1610612759",
+    "nickname": "Spurs"
+  },
+  {
+    "confName": "East",
+    "city": "Toronto",
+    "fullName": "Toronto Raptors",
+    "nickname": "Raptors",
+    "teamId": "1610612761"
+  },
+  {
+    "fullName": "Utah Jazz",
+    "city": "Utah",
+    "confName": "West",
+    "teamId": "1610612762",
+    "nickname": "Jazz"
+  },
+  {
+    "fullName": "Washington Wizards",
+    "city": "Washington",
+    "confName": "East",
+    "teamId": "1610612764",
+    "nickname": "Wizards"
+  }
+]

@@ -19,9 +19,6 @@ export class Team {
 
   @Prop({ required: true })
   confName: string;
-
-  @Prop({ required: true })
-  isActive: boolean;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);

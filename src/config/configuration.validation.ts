@@ -10,6 +10,9 @@ class EnvironmentVariables {
 
   @IsNumber()
   PORT: number;
+
+  @IsString()
+  MONGODB_DB_URI: string;
 }
 
 export function validate(config: Record<string, unknown>) {

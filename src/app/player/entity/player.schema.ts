@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { Team } from '../../teams/team.schema';
+import { Team } from 'src/app/team/entity/team.shema';
 
 export type PlayerDocument = Player & Document;
 

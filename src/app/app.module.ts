@@ -7,6 +7,7 @@ import servicesConfig from '../config/services/services.config';
 import authenticationConfig from '../config/authentication/authentication.config';
 import contextConfig from '../config/context/context.config';
 import { validate } from 'src/config/configuration.validation';
+import { TeamModule } from './team/team.module';
 
 const configFile = `${getDeploymentEnv()}.env`;
 const configPath = join(
@@ -18,7 +19,6 @@ const configPath = join(
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.MONGODB_DB_URI),
     ConfigModule.forRoot({
       envFilePath: configPath,
       load: [servicesConfig, authenticationConfig, contextConfig],
@@ -26,6 +26,8 @@ const configPath = join(
       cache: true,
       validate,
     }),
+    MongooseModule.forRoot(process.env.MONGODB_DB_URI),
+    TeamModule,
   ],
   controllers: [],
   providers: [],
