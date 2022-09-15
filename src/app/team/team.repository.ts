@@ -6,10 +6,12 @@ import { Team, TeamDocument } from './entity/team.shema';
 
 @Injectable()
 export class TeamRepository {
-  constructor(@InjectModel(Team.name) private teamModel: Model<TeamDocument>) {}
+  constructor(
+    @InjectModel(Team.name) private readonly teamModel: Model<TeamDocument>,
+  ) {}
 
   async create(createTeamRequestDto: CreateTeamRequestDto) {
-    const createTeam = new this.teamModel({
+    const createdTeam = new this.teamModel({
       _id: createTeamRequestDto.teamId,
       city: createTeamRequestDto.city,
       nickname: createTeamRequestDto.nickname,
@@ -17,7 +19,8 @@ export class TeamRepository {
       fullName: createTeamRequestDto.fullName,
     });
     try {
-      return await createTeam.save();
+      console.log(createdTeam.save);
+      return await createdTeam.save();
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
