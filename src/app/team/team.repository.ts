@@ -12,14 +12,12 @@ export class TeamRepository {
 
   async create(createTeamRequestDto: CreateTeamRequestDto) {
     const createdTeam = new this.teamModel({
-      _id: createTeamRequestDto.teamId,
       city: createTeamRequestDto.city,
       nickname: createTeamRequestDto.nickname,
       confName: createTeamRequestDto.confName,
       fullName: createTeamRequestDto.fullName,
     });
     try {
-      console.log(createdTeam.save);
       return await createdTeam.save();
     } catch (error) {
       throw new InternalServerErrorException(error);

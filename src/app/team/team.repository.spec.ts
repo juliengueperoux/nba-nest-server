@@ -7,6 +7,7 @@ import { TeamRepository } from './team.repository';
 
 describe('TeamRepository', () => {
   let repository: TeamRepository;
+  let model: Model<TeamDocument>;
 
   class ModelMock {
     constructor(private data: any) {}
@@ -35,6 +36,7 @@ describe('TeamRepository', () => {
     }).compile();
 
     repository = module.get<TeamRepository>(TeamRepository);
+    model = module.get<Model<TeamDocument>>(getModelToken(Team.name));
   });
 
   it('Should be defined.', () => {
@@ -42,26 +44,35 @@ describe('TeamRepository', () => {
   });
 
   describe('create', () => {
-    it('should create a team', async () => {
+    it('Should create a team with a nickname.', async () => {
       const createTeamRequestDto: CreateTeamRequestDto = {
-        teamId: 'An id',
         city: 'A city',
         fullName: 'fullname',
         confName: 'A conf name',
         nickname: 'nickname',
       };
       const team = new Team();
-      team._id = 'An id';
       team.city = 'A city';
       team.fullName = 'fullname';
       team.confName = 'A conf name';
       team.nickname = 'nickname';
 
-      // act
       const newTeam = await repository.create(createTeamRequestDto);
-      console.log(newTeam);
       expect(newTeam).toEqual(team);
-      // assert
+    });
+    it('Should create a team without a nickname.', async () => {
+      const createTeamRequestDto: CreateTeamRequestDto = {
+        city: 'A city',
+        fullName: 'fullname',
+        confName: 'A conf name',
+      };
+      const team = new Team();
+      team.city = 'A city';
+      team.fullName = 'fullname';
+      team.confName = 'A conf name';
+
+      const newTeam = await repository.create(createTeamRequestDto);
+      expect(newTeam).toEqual(team);
     });
   });
 });

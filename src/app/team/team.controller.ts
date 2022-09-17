@@ -1,14 +1,7 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  HttpStatus,
-  Post,
-  Res,
-} from '@nestjs/common';
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { CreateTeamRequestDto } from './dto/create-team-request.dto';
 import { TeamService } from './team.service';
-import { Response } from 'express';
+import { CreateTeamResponseDto } from './dto/create-team-response-dto';
 
 @Controller('team')
 export class TeamController {
@@ -17,11 +10,9 @@ export class TeamController {
   @Post('/createTeam')
   async createTeam(
     @Body() createTeamDto: CreateTeamRequestDto,
-    @Res() res: Response,
-  ) {
+  ): Promise<CreateTeamResponseDto> {
     try {
-      const newTeam: any = await this.teamService.createTeam(createTeamDto);
-      return res.status(HttpStatus.OK).send(newTeam);
+      return await this.teamService.createTeam(createTeamDto);
     } catch (error) {
       throw new BadRequestException(error);
     }
