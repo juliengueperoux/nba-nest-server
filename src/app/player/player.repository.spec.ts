@@ -1,18 +1,18 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Model } from 'mongoose';
-import { CreateTeamRequestDto } from './dto/create-team-request.dto';
-import { Team, TeamDocument } from './entity/team.shema';
-import { TeamRepository } from './team.repository';
+import { CreatePlayerRequestDto } from './dto/create-player-request.dto';
+import { PlayerRepository } from './player.repository';
 import mongoose from 'mongoose';
 import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
+import { Player, PlayerDocument } from './entity/player.schema';
 
-describe('TeamRepository', () => {
-  let repository: TeamRepository;
-  let model: Model<TeamDocument>;
+describe('PlayerRepository', () => {
+  let repository: PlayerRepository;
+  let model: Model<PlayerDocument>;
 
   class ModelMock {
     constructor(private data: any) {}
@@ -32,16 +32,16 @@ describe('TeamRepository', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        TeamRepository,
+        PlayerRepository,
         {
-          provide: getModelToken(Team.name),
+          provide: getModelToken(Player.name),
           useValue: ModelMock,
         },
       ],
     }).compile();
 
-    repository = module.get<TeamRepository>(TeamRepository);
-    model = module.get<Model<TeamDocument>>(getModelToken(Team.name));
+    repository = module.get<PlayerRepository>(PlayerRepository);
+    model = module.get<Model<PlayerDocument>>(getModelToken(Player.name));
   });
 
   it('Should be defined.', () => {
@@ -49,40 +49,40 @@ describe('TeamRepository', () => {
   });
 
   describe('create', () => {
-    it('Should create a team with a nickname.', async () => {
-      const createTeamRequestDto: CreateTeamRequestDto = {
+    it('Should create a player with a nickname.', async () => {
+      const createPlayerRequestDto: CreatePlayerRequestDto = {
         city: 'A city',
         fullName: 'fullname',
         confName: 'A conf name',
         nickname: 'nickname',
       };
-      const team = new Team();
-      team.city = 'A city';
-      team.fullName = 'fullname';
-      team.confName = 'A conf name';
-      team.nickname = 'nickname';
+      const player = new Player();
+      player.city = 'A city';
+      player.fullName = 'fullname';
+      player.confName = 'A conf name';
+      player.nickname = 'nickname';
 
-      const newTeam = await repository.create(createTeamRequestDto);
-      expect(newTeam).toEqual(team);
+      const newPlayer = await repository.create(createPlayerRequestDto);
+      expect(newPlayer).toEqual(player);
     });
-    it('Should create a team without a nickname.', async () => {
-      const createTeamRequestDto: CreateTeamRequestDto = {
+    it('Should create a player without a nickname.', async () => {
+      const createPlayerRequestDto: CreatePlayerRequestDto = {
         city: 'A city',
         fullName: 'fullname',
         confName: 'A conf name',
       };
-      const team = new Team();
-      team.city = 'A city';
-      team.fullName = 'fullname';
-      team.confName = 'A conf name';
+      const player = new Player();
+      player.city = 'A city';
+      player.fullName = 'fullname';
+      player.confName = 'A conf name';
 
-      expect(await repository.create(createTeamRequestDto)).toEqual(team);
+      expect(await repository.create(createPlayerRequestDto)).toEqual(player);
     });
   });
   describe('findById', () => {
     const id = new mongoose.Types.ObjectId();
 
-    it('Should return the Team.', async () => {
+    it('Should return the Player.', async () => {
       jest.spyOn(model, 'findById').mockReturnValueOnce({
         ...model,
         exec: jest.fn().mockResolvedValueOnce('test'),
@@ -108,38 +108,6 @@ describe('TeamRepository', () => {
       } as any);
       repository.findById(id).catch((error) => {
         expect(error).toBeInstanceOf(NotFoundException);
-        done();
-      });
-    });
-  });
-
-  describe('findAll', () => {
-    it('Should return the teams.', async () => {
-      jest.spyOn(model, 'find').mockReturnValueOnce({
-        ...model,
-        exec: jest.fn().mockResolvedValueOnce(['test']),
-      } as any);
-      expect(await repository.findAll()).toEqual(['test']);
-    });
-    it('Should throw an InternalServerErrorException when the mongoose query send an error.', (done) => {
-      jest.spyOn(model, 'find').mockReturnValueOnce({
-        ...model,
-        exec: jest.fn().mockRejectedValue('Error'),
-      } as any);
-      repository.findAll().catch((error) => {
-        expect(error).toBeInstanceOf(InternalServerErrorException);
-        expect(error.message).toBe('Error');
-        done();
-      });
-    });
-
-    it('Should return an empty array when the mongoose query returns a falsy value.', (done) => {
-      jest.spyOn(model, 'find').mockReturnValueOnce({
-        ...model,
-        exec: jest.fn().mockResolvedValueOnce(null),
-      } as any);
-      repository.findAll().then((data) => {
-        expect(data).toEqual([]);
         done();
       });
     });

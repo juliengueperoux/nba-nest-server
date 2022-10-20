@@ -1,6 +1,10 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { CreateTeamRequestDto } from './dto/create-team-request.dto';
 import { Team, TeamDocument } from './entity/team.shema';
 
@@ -22,5 +26,35 @@ export class TeamRepository {
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
+  }
+
+  async findById(teamId: mongoose.Types.ObjectId) {
+    let team;
+    try {
+      team = await this.teamModel.findById(teamId).exec();
+    } catch (error) {
+      throw new InternalServerErrorException(error);
+    }
+
+    if (!team) {
+      throw new NotFoundException('The team with this id does not exist');
+    }
+
+    return team;
+  }
+
+  async findAll() {
+    let teams;
+    try {
+      teams = await this.teamModel.find().exec();
+    } catch (error) {
+      throw new InternalServerErrorException(error);
+    }
+
+    if (!teams) {
+      return [];
+    }
+
+    return teams;
   }
 }

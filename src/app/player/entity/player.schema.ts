@@ -1,20 +1,16 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { Team } from 'src/app/team/entity/team.shema';
+import { Team, TeamDocument } from 'src/app/team/entity/team.shema';
 
 export type PlayerDocument = Player & Document;
 
 @Schema()
 export class Player {
-  @Prop({ required: true })
-  _id: string;
-
   @Prop({
-    required: true,
-    type: mongoose.Schema.Types.String,
+    type: mongoose.Schema.Types.ObjectId,
     ref: Team.name,
   })
-  team: Team;
+  team: mongoose.Types.ObjectId | string | TeamDocument;
 
   @Prop({ required: true })
   firstName: string;

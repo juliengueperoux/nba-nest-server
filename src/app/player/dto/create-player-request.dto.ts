@@ -3,10 +3,6 @@ import { IsDefined, IsString } from 'class-validator';
 export class CreatePlayerRequestDto {
   @IsDefined()
   @IsString()
-  personId: string;
-
-  @IsDefined()
-  @IsString()
   teamId: string;
 
   @IsDefined()
