@@ -5,7 +5,7 @@ export type TeamDocument = Team & Document;
 
 @Schema()
 export class Team {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   city: string;
 
   @Prop()

@@ -51,43 +51,32 @@ describe('PlayerRepository', () => {
   describe('create', () => {
     it('Should create a player with a nickname.', async () => {
       const createPlayerRequestDto: CreatePlayerRequestDto = {
-        city: 'A city',
-        fullName: 'fullname',
-        confName: 'A conf name',
-        nickname: 'nickname',
+        team: 'teamId',
+        firstName: 'jack',
+        lastName: 'jones',
+        position: 'center',
       };
       const player = new Player();
-      player.city = 'A city';
-      player.fullName = 'fullname';
-      player.confName = 'A conf name';
-      player.nickname = 'nickname';
+      player.team = 'teamId';
+      player.firstName = 'jack';
+      player.lastName = 'jones';
+      player.position = 'center';
 
       const newPlayer = await repository.create(createPlayerRequestDto);
       expect(newPlayer).toEqual(player);
-    });
-    it('Should create a player without a nickname.', async () => {
-      const createPlayerRequestDto: CreatePlayerRequestDto = {
-        city: 'A city',
-        fullName: 'fullname',
-        confName: 'A conf name',
-      };
-      const player = new Player();
-      player.city = 'A city';
-      player.fullName = 'fullname';
-      player.confName = 'A conf name';
-
-      expect(await repository.create(createPlayerRequestDto)).toEqual(player);
     });
   });
   describe('findById', () => {
     const id = new mongoose.Types.ObjectId();
 
     it('Should return the Player.', async () => {
+      const result = { populate: jest.fn() };
       jest.spyOn(model, 'findById').mockReturnValueOnce({
         ...model,
-        exec: jest.fn().mockResolvedValueOnce('test'),
+        exec: jest.fn().mockResolvedValueOnce(result),
       } as any);
-      expect(await repository.findById(id)).toEqual('test');
+      expect(await repository.findById(id)).toEqual(result);
+      expect(result.populate).toHaveBeenCalledWith('team');
     });
     it('Should throw an InternalServerErrorException when the mongoose query send an error.', (done) => {
       jest.spyOn(model, 'findById').mockReturnValueOnce({

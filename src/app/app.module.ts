@@ -8,6 +8,7 @@ import authenticationConfig from '../config/authentication/authentication.config
 import contextConfig from '../config/context/context.config';
 import { validate } from 'src/config/configuration.validation';
 import { TeamModule } from './team/team.module';
+import { PlayerModule } from './player/player.module';
 
 const configFile = `${getDeploymentEnv()}.env`;
 const configPath = join(
@@ -28,6 +29,7 @@ const configPath = join(
     }),
     MongooseModule.forRoot(process.env.MONGODB_DB_URI),
     TeamModule,
+    PlayerModule,
   ],
   controllers: [],
   providers: [],

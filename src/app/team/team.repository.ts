@@ -24,6 +24,8 @@ export class TeamRepository {
     try {
       return await createdTeam.save();
     } catch (error) {
+      console.log(error);
+
       throw new InternalServerErrorException(error);
     }
   }

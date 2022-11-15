@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import mongoose from 'mongoose';
 import { TeamDto } from '../team/dto/team-dto';
 import { CreatePlayerRequestDto } from './dto/create-player-request.dto';
 import { PlayerDto } from './dto/player-dto';
@@ -52,7 +53,7 @@ describe('PlayerController', () => {
   describe('createPlayer', () => {
     it('Should call createPlayer method from Player service.', () => {
       const createPlayerRequestDto: CreatePlayerRequestDto = {
-        teamId: 'teamId',
+        team: 'teamId',
         firstName: 'jack',
         lastName: 'jones',
         position: 'center',
@@ -69,6 +70,17 @@ describe('PlayerController', () => {
           expect(createPlayerSpy).toHaveBeenCalledTimes(1);
           expect(response).toBe(mockPlayer);
         });
+    });
+  });
+
+  describe('getPlayer', () => {
+    it('Should return a player.', (done) => {
+      const id = new mongoose.Types.ObjectId();
+
+      controller.getPlayer(id).then((data: any) => {
+        expect(data).toEqual(mockPlayer);
+        done();
+      });
     });
   });
 });

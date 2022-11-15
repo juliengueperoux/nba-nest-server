@@ -42,7 +42,7 @@ describe('PlayerService', () => {
 
   beforeEach(async () => {
     mockRepository = {
-      create: jest.fn().mockResolvedValue({}),
+      create: jest.fn().mockResolvedValue(repositoryMockPlayer),
       findById: jest.fn().mockResolvedValue(repositoryMockPlayer),
     };
 
@@ -66,7 +66,7 @@ describe('PlayerService', () => {
   describe('createPlayer', () => {
     it('Should send the new object to the repository', (done) => {
       const mockCreatePlayerRequestDto: CreatePlayerRequestDto = {
-        teamId: 'teamId',
+        team: 'teamId',
         firstName: 'jack',
         lastName: 'jones',
         position: 'center',

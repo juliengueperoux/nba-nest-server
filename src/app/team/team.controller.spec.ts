@@ -89,7 +89,6 @@ describe('TeamController', () => {
   describe('getSimplifiedTeams', () => {
     it('Should return simplified teams.', (done) => {
       controller.getSimplifiedTeams().then((data: any) => {
-        console.log('data', data);
         expect(data).toEqual(mockSimplifiedTeams);
         done();
       });

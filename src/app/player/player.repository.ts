@@ -16,6 +16,7 @@ export class PlayerRepository {
 
   async create(createPlayerRequestDto: CreatePlayerRequestDto) {
     const createPlayer = new this.playerModel({
+      team: createPlayerRequestDto.team,
       firstName: createPlayerRequestDto.firstName,
       lastName: createPlayerRequestDto.lastName,
       position: createPlayerRequestDto.position,
@@ -30,7 +31,8 @@ export class PlayerRepository {
   async findById(playerId: mongoose.Types.ObjectId) {
     let player;
     try {
-      player = await this.playerModel.findById(playerId).exec();
+      player = await await this.playerModel.findById(playerId).exec();
+      if (player) player.populate('team');
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
